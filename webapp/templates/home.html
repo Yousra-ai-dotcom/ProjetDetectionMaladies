@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %}Accueil{% endblock %}
+{% block content %}
+
+<div class="text-center my-5">
+  <img src="{{ url_for('static', filename='images/leaf-icon.png') }}" width="100">
+  <h1 class="mt-3">Bienvenue, {{ username }} !</h1>
+  <p class="lead">AgriScan Pro vous aide à diagnostiquer les maladies de vos plantes rapidement et intelligemment.</p>
+</div>
+
+<div class="row g-4">
+  <div class="col-md-4">
+    <div class="card p-3">
+      <h4>🌿 Analyse intelligente</h4>
+      <p>Uploadez une image de feuille et laissez notre modèle détecter la plante et sa maladie.</p>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="card p-3">
+      <h4>📈 Historique interactif</h4>
+      <p>Consultez toutes vos analyses précédentes avec date, maladie et niveau de confiance.</p>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="card p-3">
+      <h4>🧠 Conseils de traitement</h4>
+      <p>Accédez à des recommandations pour protéger vos plantes selon chaque maladie détectée.</p>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,20 @@
+# 🚫 Ignorer les fichiers lourds
+models/
+data/
+uploads/
+*.h5
+*.png
+*.jpg
+
+# 🧹 Python
+__pycache__/
+*.pyc
+
+# ⚙️ Virtualenv
+venv/
+
+# 🧩 Base de données
+users.db
+
+# 🍏 Fichiers système
+.DS_Store

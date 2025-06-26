@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block title %}Analyse{% endblock %}
+{% block content %}
+<h2>Analyse d'image</h2>
+<form method="post" enctype="multipart/form-data">
+  <div class="mb-3">
+    <label for="image" class="form-label">Choisissez une image de feuille :</label>
+    <input class="form-control" type="file" id="image" name="image" required />
+  </div>
+  <button type="submit" class="btn btn-success">Analyser</button>
+</form>
+
+{% if health_status %}
+<hr/>
+<h3>Résultat de l'analyse :</h3>
+<p><strong>{{ health_status }}</strong></p>
+<p><strong>Confiance :</strong> {{ '%.2f'|format(confidence * 100) }}%</p>
+
+{% if symptoms %}
+<h4>Symptômes :</h4>
+<p>{{ symptoms }}</p>
+{% endif %}
+
+{% if treatment %}
+<h4>Traitements recommandés :</h4>
+<ul>
+  {% for t in treatment %}
+    <li>{{ t }}</li>
+  {% endfor %}
+</ul>
+{% endif %}
+
+{% if prevention %}
+<h4>Prévention :</h4>
+<ul>
+  {% for p in prevention %}
+    <li>{{ p }}</li>
+  {% endfor %}
+</ul>
+{% endif %}
+
+{% endif %}
+{% endblock %}

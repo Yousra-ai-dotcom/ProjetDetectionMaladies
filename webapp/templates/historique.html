@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}Historique{% endblock %}
+{% block content %}
+<h2>Historique des analyses</h2>
+{% if rows %}
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Date</th>
+            <th>État</th>
+            <th>Maladie détectée</th>
+            <th>Confiance</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for row in rows %}
+        <tr>
+            <td>{{ row['analysis_date'] }}</td>
+            <td>{{ row['health_display'] }}</td>
+            <td>{{ row['disease_display'] }}</td>
+            <td>{{ '%.2f'|format(row['confidence'] * 100) }}%</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<p>Aucun historique disponible.</p>
+{% endif %}
+{% endblock %}

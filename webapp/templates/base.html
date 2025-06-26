@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8" />
+    <title>{% block title %}AgriScan Pro{% endblock %}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-agri px-4">
+  <a class="navbar-brand d-flex align-items-center" href="{{ url_for('home') }}">
+    <img src="{{ url_for('static', filename='images/leaf-icon.png') }}" alt="Logo AgriScan Pro" width="40" class="me-2" />
+    <strong>AgriScan Pro</strong>
+  </a>
+  <div class="collapse navbar-collapse">
+    <ul class="navbar-nav ms-auto">
+      {% if session.username %}
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('analyse') }}">Analyse</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('historique') }}">Historique</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('realtime') }}">Détection en direct</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('apropos') }}">À propos</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-danger" href="{{ url_for('logout') }}">Déconnexion</a>
+        </li>
+      {% else %}
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('login') }}">Connexion</a>
+        </li>
+      {% endif %}
+    </ul>
+  </div>
+</nav>
+
+<div class="container mt-4">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, message in messages %}
+          <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Fermer"></button>
+          </div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+
+    {% block content %}{% endblock %}
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

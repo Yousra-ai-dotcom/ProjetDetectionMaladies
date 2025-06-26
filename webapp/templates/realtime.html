@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}Détection en direct{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2 class="text-center mt-4 mb-4">🎥 Détection en direct avec Webcam</h2>
+
+    <div class="text-center mb-4">
+        <img src="{{ url_for('video_feed') }}" width="720" height="540" class="border shadow rounded">
+    </div>
+
+    <p class="text-muted text-center">
+        🔍 Le nom de la maladie s'affiche directement sur la vidéo en temps réel. <br>
+        ✅ En <strong>vert</strong> si la plante est saine <br>
+        ❌ En <strong>rouge</strong> si une maladie est détectée
+    </p>
+
+    <div class="text-center mt-3">
+        <a href="{{ url_for('home') }}" class="btn btn-outline-success">Retour à l'accueil</a>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,6 @@
+tensorflow==2.15.0
+opencv-python==4.6.0.66
+streamlit==1.12.2
+scikit-learn==1.0.2
+matplotlib==3.6.0
+pandas==1.5.0
